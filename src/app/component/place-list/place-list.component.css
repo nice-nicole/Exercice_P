@@ -1,0 +1,6 @@
+.card{
+  margin-left: 10px;
+}
+.my-pagination /deep/ .ngx-pagination .current {
+  background: yellow;
+}

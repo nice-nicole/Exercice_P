@@ -1,0 +1,59 @@
+<div style="width: 500px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!placeCreated">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="place.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="place.address"
+          name="address"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input
+          class="form-control"
+          id="telephone"
+          required
+          [(ngModel)]="place.telephone"
+          name="telephone"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="place.description"
+          name="description"
+        />
+      </div>
+<div class="text-center">
+  <button (click)="createDb()" class="btn btn-success mt-2 w-50">Create</button>
+</div>
+
+    </div>
+
+    <div *ngIf="placeCreated">
+      <h3>New place created !!</h3>
+      <button class="btn btn-success" (click)="newPlace()">New..</button>
+    </div>
+  </div>
+</div>

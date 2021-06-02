@@ -1,0 +1,101 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search a place..."
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-warning" type="button" (click)="searchPlace()">
+          <img src="../../../assets/loupe.svg" width="24" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mb-2">
+    <div class="col-md-7">
+      <h6>Available places</h6>
+
+    </div>
+    <div class="col-md-4 d-flex">
+      <button class="btn btn-sm btn-danger align-self-end" (click)="deleteAll()">
+        Delete All
+      </button>
+    </div>
+  </div>
+  <!-- <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let place of places; let i = index"
+        [class.active]="i == index"
+        (click)="setCurrentPlace(place, i)"
+      >
+      {{place.name}}
+
+      </li>
+    </ul> -->
+
+  <div class="row mw-100">
+    <div
+      class="card text-center border-warning mb-3"
+      style="max-width: 15rem; font-size: smaller"
+      *ngFor="let place of places |
+      paginate: {itemsPerPage: 3, currentPage:page, totalItems:totalLength};
+       let i = index"
+    >
+      <div class="card-inline">
+        <div class="card-header">{{ place.name }}</div>
+        <div class="card-body">
+          <p class="card-text">tel : {{ place.telephone }}</p>
+          <p class="card-text">address : {{ place.address }}</p>
+          <p class="card-text">description : {{ place.description }}</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- pagination controls -->
+    <pagination-controls class="text-center my-pagination" (pageChange)="page=$event">
+
+    </pagination-controls>
+
+    <!-- end of pagination controls -->
+
+
+
+
+
+  </div>
+</div>
+<div class="col-md-6">
+  <div *ngIf="currentPlace">
+    <h4>Place</h4>
+    <div>
+      <label><strong>Name:</strong></label>
+    </div>
+    <div>
+      <label><strong>Address:</strong></label>
+    </div>
+    <div>
+      <label><strong>Telephone:</strong></label>
+    </div>
+    <div>
+      <label><strong>Description:</strong></label>
+    </div>
+
+    <a class="badge badge-warning" routerLink="/places/"> Edit </a>
+  </div>
+
+  <div *ngIf="!currentPlace">
+    <br />
+    <!-- <p>Please click on a place</p> -->
+  </div>
+</div>
+<!-- </div> -->
